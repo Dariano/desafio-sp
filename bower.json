@@ -1,0 +1,24 @@
+{
+  "name": "gerenciador-de-projeto",
+  "description": "Gerenciador de projeto e tarefas",
+  "main": "index.js",
+  "authors": [
+    "darianosoares"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/Dariano/desafio-sp",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.5.8",
+    "bootstrap": "~3.3.7",
+    "angular-route": "~1.5.8",
+    "angular-dialog-service": "~5.3.0",
+    "font-awesome": "fontawesome#~4.6.3"
+  }
+}

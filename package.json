@@ -1,0 +1,28 @@
+{
+  "name": "gerenciador-de-projeto",
+  "version": "1.0.0",
+  "description": "Gerenciador de projeto e tarefas",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./bin/www",
+    "nodemon": "nodemon ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dariano/desafio-sp.git"
+  },
+  "author": "darianosoares",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dariano/desafio-sp/issues"
+  },
+  "dependencies": {
+    "body-parser": "^1.6.7",
+    "express": "^4.8.8",
+    "express-load": "^1.1.14",
+    "method-override": "^2.1.3",
+    "mongoose": "^4.5.9"
+  },
+  "homepage": "https://github.com/Dariano/desafio-sp#readme"
+}
