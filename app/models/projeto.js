@@ -10,22 +10,7 @@ module.exports = function() {
 				uniqui: true
 			}
 		},
-		// tarefas: [{
-		// 	descricao: {
-		// 		type: String,
-		// 		required: true
-		// 	},
-		// 	dataVencimento: {
-		// 		type: Date
-		// 	},
-		// 	dono: {
-		// 		type: String,
-		// 		required: true,
-		// 	},
-		// 	status: {
-		// 		type: String
-		// 	}
-		// }]
+		tarefas: [ require('./tarefa')]
 	});
 
 	return mongoose.model('Projeto', schema);
