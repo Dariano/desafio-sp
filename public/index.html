@@ -4,19 +4,19 @@
     <meta charset="utf-8">
     <title>Gerenciador de projetos</title>
     <!-- build:css css/index.min.css -->
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
-    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap-theme.css">    
+   <!--  <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap-theme.css">     -->
     <link rel="stylesheet" href="vendor/angular-dialog-service/dist/dialogs.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/bootstrap-bootswatch.min.css">
     <!-- endbuild -->
     
     <!-- build:js js/index.min.js -->
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-route/angular-route.js"></script>
     <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
-    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+   <!--  <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
     
     <script src="vendor/angular-dialog-service/dist/dialogs.min.js"></script>
 
@@ -25,28 +25,35 @@
     <!-- endbuild -->
 </head>
 <body>
-    <div data-ng-if="loading" class="text-center"><i class="fa fa-refresh fa-spin"></i></div>
-   <!--  <div class="container"></div>   -->
+    <!--  <div data-ng-if="loading" class="text-center"><i class="fa fa-refresh fa-spin"></i></div>
+   <div class="container"></div>   -->
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                    <a href="#">Projetos</a>
                 </li>
-                <li><a href="#">Simple Sidebar 1</a></li>
-                <li><a href="#">Simple Sidebar 2</a></li>
-                <li><a href="#">Simple Sidebar 3</a></li>
+                <li><a href="#">Projeto 1</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
             </ul>
         </div>
-
          <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row">
+                <div class="row" ng-controller="projetoController as projeto">
                     <div class="col-lg-12">
-                        <h1>Simple Sidebar</h1>
-                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
-                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                        <h3>{{projeto.nome}}</h3>
+                        <hr>
+                        <div class=""></div>
+                        <label for="">
+                            <input type="checkbox"/>
+                            Fazer alguma coisa @dariano
+                        </label>
+                        <label for="">
+                            <input type="checkbox"/>
+                            Fazer alguma coisa @dariano
+                        </label>
                     </div>
                 </div>
             </div>
