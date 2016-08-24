@@ -57,7 +57,7 @@ const projetoController = (app) => {
             .catch(erro => res.status(404).json(erro));
     };
 
-    controller.removerTarefa = function(req, res) {
+    controller.removerTarefa = (req, res) => {
         const idProjeto = req.params.id;
         const idTarefa = req.params.idTarefa;
 
@@ -66,14 +66,11 @@ const projetoController = (app) => {
             .select('tarefas')
             .exec()
             .then(projeto => {
-
-                console.log(projeto);
-
                 projeto.tarefas.pull({ _id: idTarefa });
 
                 projeto
                     .save()
-                    .then(_projeto => res.status(204))
+                    .then(() => res.status(204))
                     .catch(erro => res.status(500).json(erro));
             });
     };

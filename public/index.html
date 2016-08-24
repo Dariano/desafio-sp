@@ -1,27 +1,58 @@
-<html data-ng-app="mean">
+<html data-ng-app="desafio">
 <head>
-	<meta name="viewport", content="width=device-width">
-	<meta charset="utf-8">
-	<title>Gerenciador de projetos</title>
-	<!-- build:css css/index.min.css -->
-	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
-	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap-theme.css">	
-	<link rel="stylesheet" href="./bower_components/angular-dialog-service/dist/dialogs.css">
-	<link rel="stylesheet" href="./bower_components/fontawesome/css/font-awesome.min.css">
-	<!-- endbuild -->
-	
-	<!-- build:js js/index.min.js -->
-	<script src="./bower_components/angular/angular.js"></script>
-	<script src="./bower_components/angular-route/angular-route.js"></script>
-	<script src="./bower_components/angular-sanitize/angular-sanitize.min.js"></script>
-	<script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-	
-	<script src="./bower_components/angular-dialog-service/dist/dialogs.min.js"></script>
-	<!-- endbuild -->
+    <meta name="viewport", content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta charset="utf-8">
+    <title>Gerenciador de projetos</title>
+    <!-- build:css css/index.min.css -->
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap-theme.css">    
+    <link rel="stylesheet" href="vendor/angular-dialog-service/dist/dialogs.css">
+    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <!-- endbuild -->
+    
+    <!-- build:js js/index.min.js -->
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
+    <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    
+    <script src="vendor/angular-dialog-service/dist/dialogs.min.js"></script>
+
+    <script src="js/app.js"></script>
+    <script src="js/projetos/projetoController.js"></script>
+    <!-- endbuild -->
 </head>
 <body>
-	<div data-ng-if="loading" class="text-center"><i class="fa fa-refresh fa-spin"></i></div>
-	<div data-ng-view class="container"></div>	
-	Oi
+    <div data-ng-if="loading" class="text-center"><i class="fa fa-refresh fa-spin"></i></div>
+   <!--  <div class="container"></div>   -->
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                   <a href="#">Projetos</a>
+                </li>
+                <li><a href="#">Simple Sidebar 1</a></li>
+                <li><a href="#">Simple Sidebar 2</a></li>
+                <li><a href="#">Simple Sidebar 3</a></li>
+            </ul>
+        </div>
+
+         <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>Simple Sidebar</h1>
+                        <p>This template has a responsive menu toggling system. The menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will appear/disappear. On small screens, the page content will be pushed off canvas.</p>
+                        <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
+    
 </body>
 </html>
