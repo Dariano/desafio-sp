@@ -16,44 +16,51 @@
     <script src="vendor/angular/angular.js"></script>
     <script src="vendor/angular-route/angular-route.js"></script>
     <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
-   <!--  <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script> -->
+    <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     
     <script src="vendor/angular-dialog-service/dist/dialogs.min.js"></script>
 
     <script src="js/app.js"></script>
-    <script src="js/projetos/projetoController.js"></script>
+    <script src="js/projetos/ProjetoController.js"></script>
+    <script src="js/tarefas/TarefaController.js"></script>
     <!-- endbuild -->
 </head>
 <body>
-    <!--  <div data-ng-if="loading" class="text-center"><i class="fa fa-refresh fa-spin"></i></div>
-   <div class="container"></div>   -->
+   <div class="container"></div>
     <div id="wrapper">
-        <div id="sidebar-wrapper">
+        <div id="sidebar-wrapper" ng-controller="ProjetoController as _projeto">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                    <a href="#">Projetos</a>
                 </li>
-                <li><a href="#">Projeto 1</a></li>
-                <li><a href="#">Projeto 2</a></li>
-                <li><a href="#">Projeto 3</a></li>
+                <li ng-repeat="projeto in _projeto.lista">
+                    <a href="#">projeto.nome</a>
+                </li>
             </ul>
         </div>
          <!-- Page Content -->
         <div id="page-content-wrapper">
             <div class="container-fluid">
-                <div class="row" ng-controller="projetoController as projeto">
+                <div class="row" ng-controller="TarefaController as _tarefa">
                     <div class="col-lg-12">
-                        <h3>{{projeto.nome}}</h3>
+                        <h3>{{_tarefa.projeto.nome}}</h3>
                         <hr>
-                        <div class=""></div>
-                        <label for="">
-                            <input type="checkbox"/>
-                            Fazer alguma coisa @dariano
-                        </label>
-                        <label for="">
-                            <input type="checkbox"/>
-                            Fazer alguma coisa @dariano
-                        </label>
+
+                        <div class="input-group" ng-repeat="tarefa in _tarefa.lista">
+                            <div class="checkbox">
+                                <label>
+                                   <input type="checkbox">
+                                   tarefa.descricao, @ tarefa.dono, tarefa.vencimentoFormatado 
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <input type="checkbox" disabled="">
+                            </span>
+                            <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" />
+                        </div>
                     </div>
                 </div>
             </div>
