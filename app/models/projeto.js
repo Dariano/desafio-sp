@@ -10,7 +10,7 @@ module.exports = function() {
 				uniqui: true
 			}
 		},
-		tarefas: [ require('./tarefa')]
+		tarefas: [ require('./tarefa')()]
 	});
 
 	return mongoose.model('Projeto', schema);

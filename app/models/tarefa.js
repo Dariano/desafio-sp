@@ -8,7 +8,7 @@ module.exports = function() {
 			required: true
 		},
 		dataVencimento: {
-			type: Date
+			type: String
 		},
 		dono: {
 			type: String,
