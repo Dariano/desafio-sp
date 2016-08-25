@@ -13,11 +13,10 @@
                     <div class="checkbox">
                         <label>
                            <input type="checkbox" ng-model="tarefa.concluida">
-                           <span class="tarefa-{{tarefa.status}}" ng-class="{ 'tarefa-concluida': tarefa.concluida}">
+                           <span  ng-class="{ 'sublinha': tarefa.concluida, tarefa-atrazada: tarefa.status == 'atrazada' }">
                                {{ tarefa.descricao}}, 
                                <span class="descricao-tarefa" > @{{tarefa.dono }}, {{tarefa.vencimentoFormatado}}</span>
                            </span>
-                           
                         </label>
                     </div>
                 </div>
