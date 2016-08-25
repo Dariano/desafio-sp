@@ -1,0 +1,35 @@
+<div id="page-content-wrapper" ng-controller="TarefaController as _tarefa">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cabecalho-tarefa">
+                    <h3>{{_tarefa.projeto.nome}}</h3>
+                    <div class="remover-projeto"><a href="#">Remover projeto</a></div>
+                </div>
+                <hr>
+                <div class="input-group" ng-repeat="tarefa in _tarefa.lista">
+                    <div class="checkbox">
+                        <label>
+                           <input type="checkbox" ng-checked="tarefa.concluida" ng-disabled="tarefa.concluida">
+                           <span class="tarefa-{{tarefa.status}}">
+                               {{ tarefa.descricao}}, 
+                               <span class="descricao-tarefa" ng-class="'tarefa-concluida': tarefa.status=='concluida'"> @{{tarefa.dono }}, {{tarefa.vencimentoFormatado}}</span>
+                           </span>
+                           
+                        </label>
+                    </div>
+                </div>
+                <div class="input-group" ng-if="novo">
+                    <span class="input-group-addon left">
+                        <input type="checkbox" disabled="">
+                    </span>
+                    <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês"/>
+                </div>
+
+                <div>
+                    <a href="#" ng-click="novo = !novo">+ Tarefa</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,12 +9,13 @@
     <link rel="stylesheet" href="vendor/angular-dialog-service/dist/dialogs.css">
     <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/tarefa.css">
     <link rel="stylesheet" href="css/bootstrap-bootswatch.min.css">
     <!-- endbuild -->
     
     <!-- build:js js/index.min.js -->
     <script src="vendor/angular/angular.js"></script>
-    <script src="vendor/angular-route/angular-route.js"></script>
+    <script src="vendor//angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="vendor/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
     
@@ -26,47 +27,6 @@
     <!-- endbuild -->
 </head>
 <body>
-   <div class="container"></div>
-    <div id="wrapper">
-        <div id="sidebar-wrapper" ng-controller="ProjetoController as _projeto">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                   <a href="#">Projetos</a>
-                </li>
-                <li ng-repeat="projeto in _projeto.lista">
-                    <a href="#">projeto.nome</a>
-                </li>
-            </ul>
-        </div>
-         <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row" ng-controller="TarefaController as _tarefa">
-                    <div class="col-lg-12">
-                        <h3>{{_tarefa.projeto.nome}}</h3>
-                        <hr>
-
-                        <div class="input-group" ng-repeat="tarefa in _tarefa.lista">
-                            <div class="checkbox">
-                                <label>
-                                   <input type="checkbox">
-                                   tarefa.descricao, @ tarefa.dono, tarefa.vencimentoFormatado 
-                                </label>
-                            </div>
-                        </div>
-
-                        <div class="input-group">
-                            <span class="input-group-addon">
-                                <input type="checkbox" disabled="">
-                            </span>
-                            <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    
+    <div ui-view></div>    
 </body>
 </html>

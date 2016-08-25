@@ -1,3 +1,25 @@
-.nounderline {
+.cabecalho-tarefa {
+	position: relative; 
+}
+
+.remover-projeto {
+	position: absolute;
+	right: 0px;
+	padding: 10px
+}
+
+.tarefa-concluida {
 	text-decoration: line-through;
+}
+
+.tarefa-atrazada {
+	color: #CD5C5C;
+}
+
+.descricao-tarefa{
+	font-family: serif;
+}
+
+.left {
+	padding-left: 0px !important;
 }

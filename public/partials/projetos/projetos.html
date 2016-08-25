@@ -1,0 +1,15 @@
+<div id="wrapper">
+    <div id="sidebar-wrapper">
+        <ul class="sidebar-nav">
+            <li class="sidebar-brand">
+               <a href="#">Projetos</a>
+            </li>
+            <li ng-repeat="p in projeto.lista">
+                <a href="#/projetos/{{p._id}}">{{ p.nome }}</a>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-include="'./partials/tarefas/tarefas.html'"></div>
+
+</div>
