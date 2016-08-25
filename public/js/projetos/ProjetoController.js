@@ -1,21 +1,55 @@
 angular
-	.module('desafio')
-	.controller('ProjetoController', [function () {
+    .module('desafio')
+    .controller('ProjetoController', function (Projeto, $state, $rootScope) {
 
-		
+        var me = this;
+        me.todos = [];
+        me.temProjetos = false;
+        buscaTodosProjetos();
 
-		this.lista = [
-			{
-				_id: 1,
-				nome: 'Projeto 1'
-			},
-			{
-				_id: 2,
-				nome: 'Projeto 2'
-			},
-			{
-				_id: 3,
-				nome: 'Projeto 3'
-			}
-		];
-	}]);
+        this.salva = function (projeto) {
+            if(!projeto) return;
+
+            Projeto
+                .salva(projeto)
+                .success(adiciona)
+                .error(erro);
+        };
+
+        $rootScope.$on('projeto.novo', function (e, projeto) {
+            adiciona(projeto);
+        });
+
+        ////////////////////////////////
+
+        function adiciona(projeto) {
+            me.todos.push(projeto);
+        }
+
+        function buscaTodosProjetos() {
+            Projeto
+                .todos()
+                .success(mostra)
+                .error(erro);
+        }
+
+        function mostra(projetos) {
+            me.temProjetos = tem(projetos);
+
+            if(me.temProjetos){
+                me.todos = projetos;
+                $state.go('projetos.tarefas', { id: projetos[0]._id });
+                return;
+            }
+
+            $state.go('projetos.novo');
+        }
+
+        function tem(projetos) {
+            return !!projetos && projetos.length > 0;
+        }
+
+        function erro(erro) {
+            console.log(erro);
+        }
+    });

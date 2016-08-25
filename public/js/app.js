@@ -14,24 +14,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controller: 'ProjetoController',
             controllerAs: 'projeto'
         })
-        .state('tarefas', {            
-            url: '/tarefas',
-            templateUrl: 'partials/tarefas/tarefas.html',
+        .state('projetos.novo', {
+        	url: "/novo",
+        	templateUrl: 'partials/projetos/projeto-novo.html',
+            controller: 'NovoProjetoController',
+            controllerAs: 'projeto',
             onEnter: function(){
-              console.log("tarefas");
+              console.log("projetos.novo");
             }
         })
+        .state('projetos.tarefas', {
+            url: "/:id",
+            templateUrl: 'partials/tarefas/tarefas.html',
+            controller: 'TarefaController',
+            controllerAs: 'tarefa'
+        })
         .state('projetos.tarefas.nova', {
-            url: '/tarefas/nova',
-            views: {
-                'tarefa': {
-
+            url: "/:id",
             templateUrl: 'partials/tarefas/tarefa-nova.html',
-            onEnter: function(){
-              console.log("tarefas.nova");
-            }
-                }
-            }
+            controller: 'TarefaController',
+            controllerAs: 'tarefa'
         });
 
 });

@@ -12,6 +12,7 @@ const projetoController =  app => {
     };
 
     controller.salvarProjeto = (req, res) => {
+        console.log(req.body);
         Projeto
             .create(req.body)
             .then(projeto => res.json(projeto))

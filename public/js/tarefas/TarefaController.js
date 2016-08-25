@@ -1,6 +1,6 @@
 angular
     .module('desafio')
-    .controller('TarefaController', [function($state) {
+    .controller('TarefaController', function($state, $rootScope) {
         this.projeto = {
             nome: 'Projeto 1'
         };
@@ -16,11 +16,29 @@ angular
             vencimentoFormatado: '8/9',
             status: 'atrazada',
             concluida: false
-        }, ];
+        }];
 
+        this.salva = function(novaTarefa) {
+            
+            if(!novaTarefa) return;
 
-        this.nova = function() {
-            console.log('oi');
-            $state.go('projeto.nova');
+            var tarefa = tarefaBuild(novaTarefa);
+            
+            this.lista.push(tarefa);
+            this.nova = false;
         }
-    }]);
+
+        $rootScope.$on('projeto.atualizado', function (e, projeto) {
+            console.log('projeto.atualizado', projeto);
+            this.projeto = projeto;
+        });
+
+        function tarefaBuild(textoTarefa) {
+            var tarefa = {};
+            tarefa.descricao = textoTarefa.split(',')[0];
+            tarefa.dono = textoTarefa.split(',')[1];
+            tarefa.vencimentoFormatado = textoTarefa.split(',')[2];
+
+            return tarefa; 
+        }
+    });

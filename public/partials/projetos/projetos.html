@@ -4,12 +4,16 @@
             <li class="sidebar-brand">
                <a href="#">Projetos</a>
             </li>
-            <li ng-repeat="p in projeto.lista">
+            <li ng-repeat="p in projeto.todos">
                 <a href="#/projetos/{{p._id}}">{{ p.nome }}</a>
+            </li>
+            <li>
+                <a href="#" ui-sref="projetos.novo">+ Projeto</a>
             </li>
         </ul>
     </div>
 
-    <div ng-include="'./partials/tarefas/tarefas.html'"></div>
+    <div ui-view></div> 
 
+    <!-- <div ng-include="'./partials/tarefas/tarefas.html'"></div> -->
 </div>
