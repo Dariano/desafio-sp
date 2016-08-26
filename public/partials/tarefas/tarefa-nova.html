@@ -1,6 +1,6 @@
-<div class="input-group">
-    <span class="input-group-addon">
-        <input type="checkbox" disabled="">
+<div class="input-group" ng-if="tarefa.nova">
+    <span class="input-group-addon left">
+        <input type="checkbox" disabled="" ng-model="tarefa.concluida">
     </span>
-    <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês"/>
+    <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="novaTarefa" ng-blur="tarefa.salva(novaTarefa)"/>
 </div>

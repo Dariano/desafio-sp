@@ -20,6 +20,14 @@ angular
             adiciona(projeto);
         });
 
+        $rootScope.$on('projeto.removido', function (e, projeto) {
+            me.todos = me.todos.filter(function (p) {
+            	return p._id != projeto._id;
+            });
+
+            mostra(me.todos);
+        });
+
         ////////////////////////////////
 
         function adiciona(projeto) {

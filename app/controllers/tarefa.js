@@ -3,7 +3,7 @@ const projetoController = (app) => {
     var Projeto = app.models.projeto;
     var controller = {};
 
-    controller.listaTarefas = (req, res) => {
+    controller.lista = (req, res) => {
         const idProjeto = req.params.id;
 
         Projeto
@@ -14,7 +14,7 @@ const projetoController = (app) => {
             .catch(erro => res.status(500).json(erro));
     };
 
-    controller.salvarTarefa = (req, res) => {
+    controller.salva = (req, res) => {
 
         const idProjeto = req.params.id;
 
@@ -27,6 +27,7 @@ const projetoController = (app) => {
                 projeto.tarefas.push({
                     descricao: req.body.descricao,
                     dono: req.body.dono,
+                    dataVencimento: req.body.dataVencimento,
                     status: req.body.status
                 });
 
@@ -37,7 +38,35 @@ const projetoController = (app) => {
             });
     };
 
-    controller.obtemTarefa = (req, res) => {
+    controller.altera = (req, res) => {
+
+        const idProjeto = req.params.id;
+        const idTarefa = req.params.idTarefa;
+
+        Projeto
+            .findById(idProjeto)
+            .select('tarefas')
+            .exec()
+            .then(projeto => {
+
+                projeto.tarefas
+                    .filter(tarefa => tarefa._id == idTarefa)
+                    .map(function (tarefa) {
+                        return {
+                            status: req.body.status
+                        }
+                    });
+
+                    console.log(projeto.tarefas);
+
+                projeto
+                    .save()
+                    .then(_projeto => res.json(_projeto))
+                    .catch(erro => res.status(500).json(erro));
+            });
+    };
+
+    controller.busca = (req, res) => {
         const idProjeto = req.params.id;
         const idTarefa = req.params.idTarefa;
 
@@ -57,7 +86,7 @@ const projetoController = (app) => {
             .catch(erro => res.status(404).json(erro));
     };
 
-    controller.removerTarefa = (req, res) => {
+    controller.remove = (req, res) => {
         const idProjeto = req.params.id;
         const idTarefa = req.params.idTarefa;
 
@@ -66,7 +95,7 @@ const projetoController = (app) => {
             .select('tarefas')
             .exec()
             .then(projeto => {
-                projeto.tarefas.pull({ _id: idTarefa });
+                projeto.tarefas.id(idTarefa).remove();
 
                 projeto
                     .save()

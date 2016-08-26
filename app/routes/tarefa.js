@@ -1,12 +1,13 @@
 module.exports = function (app) {
 
-	var controller = app.controllers.tarefa;
+	var tarefaController = app.controllers.tarefa;
 
 	app.route('/projetos/:id/tarefas')
-		.get(controller.listaTarefas)
-		.post(controller.salvarTarefa);
+		.get(tarefaController.lista)
+		.post(tarefaController.salva);
 		
 	app.route('/projetos/:id/tarefas/:idTarefa')
-		.get(controller.obtemTarefa)
-		.delete(controller.removerTarefa);
+		.get(tarefaController.busca)
+		.put(tarefaController.altera)
+		.delete(tarefaController.remove);
 };

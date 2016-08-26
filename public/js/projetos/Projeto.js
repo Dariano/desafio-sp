@@ -6,7 +6,7 @@ angular
                 return $http.get('/projetos');
             },
             busca: function (id) {
-                return $http.get('/projetos/' + id);
+                return $http.get('/projetos/' + id, { cached: true });
             },
             salva: function (projeto) {
                 return $http.post('/projetos/', projeto);

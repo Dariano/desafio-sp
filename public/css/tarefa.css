@@ -9,3 +9,7 @@
 .tarefa-atrazada {
 	color: red;
 }
+
+.left {
+	padding-left: 0px !important;
+}

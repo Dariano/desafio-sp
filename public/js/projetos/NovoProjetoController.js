@@ -1,17 +1,26 @@
 angular
 	.module('desafio')
-	.controller('NovoProjetoController', function(Projeto, $rootScope, $state){
-		this.salva = function (nome) {
+	.controller('NovoProjetoController', function(Projeto, $rootScope, $state) {
+
+		this.salva = function(nome) {
+			if(!nome) return;
+
 			Projeto
-				.salva( { nome: nome })
-				.success(function (projeto) {
-					// Dispara um evendo para atualizar a lista de projeto e redirencionar para as tarefas.
-					console.log('NovoProjetoController',  projeto);
-					$rootScope.$emit('projeto.novo', projeto);
-					$state.go('projetos.tarefas', { _id: projeto._id });
-				})
-				.error(function (erro) {
-					console.log(erro);
-				});
+				.salva({ nome: nome })
+				.success(notifica)
+				.error(mostra);
+		};
+
+		///////////////////////////////////
+
+		function notifica(projeto) {
+			$rootScope.$emit('projeto.novo', projeto);
+			$state.go('projetos.tarefas', {
+				id: projeto._id
+			});
+		}
+
+		function mostra(erro) {
+			console.log(erro);
 		}
 	});

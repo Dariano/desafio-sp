@@ -1,36 +1,32 @@
 <div id="page-content-wrapper">
     <div class="container-fluid">
-        <div class="row">
-            <div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <h3>{{tarefa.projeto.nome}}</h3>                        
-                    </div>
-                    <div class="col-md-3"><a href="#">Remover projeto</a></div>
-                </div>
-                <hr>
-                <div class="input-group" ng-repeat="tarefa in tarefa.lista">
-                    <div class="checkbox">
-                        <label>
-                           <input type="checkbox" ng-model="tarefa.concluida">
-                           <span  ng-class="{ 'sublinha': tarefa.concluida, tarefa-atrazada: tarefa.status == 'atrazada' }">
-                               {{ tarefa.descricao}}, 
-                               <span class="descricao-tarefa" > @{{tarefa.dono }}, {{tarefa.vencimentoFormatado}}</span>
-                           </span>
-                        </label>
-                    </div>
-                </div>
-                <div class="input-group" ng-if="tarefa.nova">
-                    <span class="input-group-addon left">
-                        <input type="checkbox" disabled="" ng-model="tarefa.concluida">
-                    </span>
-                    <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="novaTarefa" ng-blur="tarefa.salva(novaTarefa)"/>
-                </div>
-
-                <div>
-                    <a href="#/" ui-sref="projetos.tarefas.nova" ng-click="tarefa.nova = !tarefa.nova">+ Tarefa</a>
-                </div>
+        
+        <div ng-include="'./partials/projetos/projeto-detalhes.html'"></div>
+        
+        <hr>
+       
+        <div class="input-group" ng-repeat="t in tarefa.todas">
+            <div class="checkbox">
+                <label>
+                   <input type="checkbox" ng-model="t.concluida" ng-change="tarefa.altera(t)">
+                   <span  ng-class="{ 'sublinha': tarefa.concluida, 'tarefa-atrazada': t.status == 'atrazada' }">
+                       {{ t.descricao}}, 
+                       <span class="descricao-tarefa" > @{{t.dono }}, {{t.dataVencimento}}</span>
+                   </span>
+                </label>
             </div>
         </div>
+        
+        <div class="input-group" ng-if="tarefa.nova">
+            <span class="input-group-addon left">
+                <input type="checkbox" disabled="" ng-model="tarefa.concluida">
+            </span>
+            <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="novaTarefa" ng-blur="tarefa.salva(novaTarefa)"/>
+        </div>
+
+        <div>
+            <a class="link" ng-click="tarefa.nova = !tarefa.nova">{{ tarefa.nova ? '-' : '+'}} Tarefa</a>
+        </div>
+
     </div>
 </div>

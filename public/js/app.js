@@ -30,7 +30,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
             controllerAs: 'tarefa'
         })
         .state('projetos.tarefas.nova', {
-            url: "/:id",
+            url: "/nova-tarefa",
             templateUrl: 'partials/tarefas/tarefa-nova.html',
             controller: 'TarefaController',
             controllerAs: 'tarefa'
