@@ -1,4 +1,5 @@
-# desafio-sp
+# Projeto de gerenciamento de tarefas
+
 Criar uma ferramenta de gerenciamento de projetos e tarefas.
 
 A aplicação foi desenvolvida usando a stack MEAN.
@@ -13,15 +14,15 @@ Instalar o bower
 Instalar o MONGODB, usei a varsão 3.2.x
 - Depois de instalado rede o serviço do mongodb.
 
-###Depois de instalado é só executar dos comandos para baixas as dependências.
+Depois de instalado é só executar dos comandos para baixas as dependências.
 
 > npm install
 > bower install
 
-###Para rodar a aplicação execute o comando
+Para rodar a aplicação execute o comando
 
 > npm start
 
-###Abra o navegador no endreço 
+Abra o navegador no endreço 
 
 > http://localhost:3001/#/
