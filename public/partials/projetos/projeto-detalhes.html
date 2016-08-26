@@ -1,15 +1,16 @@
-<div class="row" ng-controller="ProjetoDetalhesController as ctrl">
-    <div class="col-md-6">
+<div class="row titulo-projeto" ng-controller="ProjetoDetalhesController as ctrl">
+    <div class="col-md-8">
         <h3>{{ ctrl.projeto.nome }}</h3>
     </div>
-    <div class="col-md-3">
-    	<span title="Tarefas concluidas">{{ctrl.tarefas.concluidas}}</span>
-    	/
-    	<span title="Tarefas atrasadas">{{ctrl.tarefas.atrasadas}}</span>
-    	/
-    	<span title="Total de tarefas">{{ctrl.tarefas.total}}</span>
-    </div>
-    <div class="col-md-3">
-    	<a class="link" ng-click="ctrl.remove(ctrl.projeto)">Remover projeto</a>
+
+    <div class="col-md-4 titulo-projeto-alinha">
+        <span title="Tarefas concluidas">{{ctrl.tarefas.concluidas}}</span>
+        /
+        <span title="Tarefas atrasadas">{{ctrl.tarefas.atrasadas}}</span>
+        /
+        <span title="Total de tarefas">{{ctrl.tarefas.total}}</span>
+        <span class="titulo-projeto-separador">
+            <a class="link" ng-click="ctrl.remove(ctrl.projeto)">Remover projeto</a>
+        </span>
     </div>
 </div>

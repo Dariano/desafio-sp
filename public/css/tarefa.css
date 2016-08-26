@@ -13,3 +13,16 @@
 .left {
 	padding-left: 0px !important;
 }
+
+.titulo-projeto {
+	border-bottom: 1px solid #808080;
+}
+
+.titulo-projeto-alinha {
+	padding-top: 37px;
+    padding-left: 50px !important;
+}
+
+.titulo-projeto-separador {
+	padding-left: 15px !important;
+}

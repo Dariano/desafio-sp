@@ -37,7 +37,7 @@ angular
         me.isAtrazada = function (data) {
             var dataConvetida = moment(data);
             if(!dataConvetida.isValid()) return false;
-            console.log(dataConvetida < moment())
+
             return dataConvetida < moment();
         };
 

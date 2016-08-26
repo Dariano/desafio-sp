@@ -2,9 +2,7 @@
     <div class="container-fluid">
         
         <div ng-include="'./partials/projetos/projeto-detalhes.html'"></div>
-        
-        <hr>
-       
+        <br>
         <div class="input-group" ng-repeat="t in tarefa.todas | orderBy: 'dataVencimento'">
             <div class="checkbox">
                 <label>
