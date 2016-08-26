@@ -2,7 +2,7 @@
      <div class="row">
         <div class="col-md-9">
             <div class="form-group">
-                <input class="form-control" ng-model="projeto.nome" type="text" placeholder="Digite o novo projeto" ng-blur="projeto.salva(projeto.nome)">
+                <input class="form-control" ng-model="projeto.nome" type="text" placeholder="Digite o novo projeto" ng-keypress="projeto.salva(projeto.nome)">
             </div>   
         </div>
     </div>

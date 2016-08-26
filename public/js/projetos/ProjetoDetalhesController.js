@@ -2,6 +2,11 @@ angular
 	.module('desafio')
 	.controller('ProjetoDetalhesController', function($rootScope, $state, $stateParams, Projeto, dialogs) {
 		var me = this;
+		me.tarefas = {
+			concluidas: 0,
+			atrasadas: 0,
+			total: 0
+		};
 
 		carregarProjeto($stateParams.id);
 
@@ -21,6 +26,10 @@ angular
 				});
 		};
 
+		$rootScope.$on('tarefa.alterada', function (e, tarefas) {
+			calculaTarefas(tarefas);
+		});
+
 		/////////////////////////////////////
 
 		function carregarProjeto(idProjeto) {
@@ -32,6 +41,7 @@ angular
 
 		function atualiza(projeto) {
 			me.projeto = projeto;
+			calculaTarefas(projeto.tarefas);
 		}
 
 		function notificaRemocao(projeto) {
@@ -43,5 +53,19 @@ angular
 
 		function notifica(erro) {
 			console.log(erro);
+		}
+
+		function calculaTarefas(tarefas) {
+			me.tarefas.concluidas = tarefas.filter(concluidas).length;
+			me.tarefas.atrasadas = tarefas.filter(atrazada).length;
+			me.tarefas.total = tarefas.length;
+		}
+
+		function concluidas(tarefa) {
+			return tarefa.concluida;
+		}
+
+		function atrazada(tarefa) {
+			return tarefa.dataVencimento < moment();
 		}
 	});

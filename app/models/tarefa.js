@@ -8,14 +8,14 @@ module.exports = function() {
 			required: true
 		},
 		dataVencimento: {
-			type: String
+			type: Date
 		},
 		dono: {
 			type: String,
 			required: true,
 		},
-		status: {
-			type: String
+		concluida: {
+			type: Boolean
 		}
 	});
 

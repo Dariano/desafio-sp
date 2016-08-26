@@ -5,13 +5,13 @@
         
         <hr>
        
-        <div class="input-group" ng-repeat="t in tarefa.todas">
+        <div class="input-group" ng-repeat="t in tarefa.todas | orderBy: 'dataVencimento'">
             <div class="checkbox">
                 <label>
                    <input type="checkbox" ng-model="t.concluida" ng-change="tarefa.altera(t)">
-                   <span  ng-class="{ 'sublinha': tarefa.concluida, 'tarefa-atrazada': t.status == 'atrazada' }">
+                   <span  ng-class="{ 'sublinha': t.concluida, 'tarefa-atrazada': (!t.concluida && tarefa.isAtrazada(t.dataVencimento))}">
                        {{ t.descricao}}, 
-                       <span class="descricao-tarefa" > @{{t.dono }}, {{t.dataVencimento}}</span>
+                       <span class="descricao-tarefa" > @{{t.dono }}, {{tarefa.dataFormatada(t.dataVencimento)}}</span>
                    </span>
                 </label>
             </div>
@@ -21,7 +21,7 @@
             <span class="input-group-addon left">
                 <input type="checkbox" disabled="" ng-model="tarefa.concluida">
             </span>
-            <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="novaTarefa" ng-blur="tarefa.salva(novaTarefa)"/>
+            <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="novaTarefa" ng-blur="tarefa.salva(novaTarefa)" value="Nova tarefa, @Dono, Dia/Mês" />
         </div>
 
         <div>

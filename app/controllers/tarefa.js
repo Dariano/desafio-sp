@@ -33,7 +33,10 @@ const projetoController = (app) => {
 
                 projeto
                     .save()
-                    .then(_projeto => res.json(_projeto))
+                    .then(_projeto => {
+                        const tarefa = _projeto.tarefas[_projeto.tarefas.length -1];
+                        res.json(tarefa);
+                    })
                     .catch(erro => res.status(500).json(erro));
             });
     };
@@ -49,19 +52,15 @@ const projetoController = (app) => {
             .exec()
             .then(projeto => {
 
-                projeto.tarefas
-                    .filter(tarefa => tarefa._id == idTarefa)
-                    .map(function (tarefa) {
-                        return {
-                            status: req.body.status
-                        }
-                    });
-
-                    console.log(projeto.tarefas);
-
+                const tarefa = projeto.tarefas.id(idTarefa);
+                tarefa.concluida = req.body.concluida;
+                   
                 projeto
                     .save()
-                    .then(_projeto => res.json(_projeto))
+                    .then(_projeto => {
+                        const tarefa = _projeto.tarefas.id(idTarefa);
+                        res.json(tarefa);
+                    })
                     .catch(erro => res.status(500).json(erro));
             });
     };
