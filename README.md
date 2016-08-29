@@ -17,6 +17,7 @@ Instalar o MONGODB, usei a varsão 3.2.x
 Depois de instalado é só executar dos comandos para baixas as dependências.
 
 > npm install
+
 > bower install
 
 Para rodar a aplicação execute o comando
