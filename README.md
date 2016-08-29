@@ -7,6 +7,7 @@ A aplicação foi desenvolvida usando a stack MEAN.
 ###O que precisa para rodar a aplicação?
 
 Instalar o NODEJS, usei a versão 5.5.x
+
 Instalar o bower
 
 > npm install bower -g
