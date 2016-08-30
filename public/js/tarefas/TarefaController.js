@@ -6,7 +6,8 @@ angular
 
         buscaProjetos($stateParams.id);
 
-        me.salva = function(novaTarefa) {
+        me.salva = function(event, novaTarefa) {
+            if(event.which != 13) return;
 
             if (!novaTarefa) return;
 
@@ -82,7 +83,7 @@ angular
         function formataData(texto) {
             var hoje = new Date();
             var dia = texto.split('/')[0];
-            var mes = texto.split('/')[1];
+            var mes = texto.split('/')[1] - 1; // No Date os meses são de 0 - 11
 
             if(dia && mes) {
                 return new Date(hoje.getUTCFullYear(), parseInt(mes), parseInt(dia));

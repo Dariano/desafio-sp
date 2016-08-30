@@ -4,7 +4,7 @@ angular
 
 		this.salva = function(nome) {
 			if(event.which != 13) return;
-			
+
 			if(!nome) return;
 
 			Projeto

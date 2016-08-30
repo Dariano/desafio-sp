@@ -19,7 +19,8 @@
             <span class="input-group-addon left">
                 <input type="checkbox" disabled="" ng-model="tarefa.concluida">
             </span>
-            <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="novaTarefa" ng-blur="tarefa.salva(novaTarefa)" value="Nova tarefa, @Dono, Dia/Mês" />
+            <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="novaTarefa" 
+            ng-keypress="tarefa.salva($event, novaTarefa)" value="Nova tarefa, @Dono, Dia/Mês" />
         </div>
 
         <div>
