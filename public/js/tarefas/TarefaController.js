@@ -39,7 +39,7 @@ angular
             var dataConvetida = moment(data);
             if(!dataConvetida.isValid()) return false;
 
-            return dataConvetida < moment();
+            return dataConvetida.diff(moment(), 'days') < 0;
         };
 
         ///////////////////////////////////////////
@@ -66,12 +66,14 @@ angular
 
         function tarefaBuild(textoTarefa) {
             var tarefa = {};
-            tarefa.descricao = trim(textoTarefa.split(',')[0]);
-            tarefa.dono = trim(textoTarefa.split(',')[1]);
-            tarefa.vencimentoFormatado = trim(textoTarefa.split(',')[2]);
+            var descricao = textoTarefa.split(',')[0];
+            tarefa.descricao =trim(descricao); //TODO: Validar e novificar
+
+            var dono = textoTarefa.split(',')[1];
+            tarefa.dono = !dono && me.todas ? me.todas[0].dono : dono; //TODO: Validar e novificar
             
-            var data = trim(textoTarefa.split(',')[2]);
-            tarefa.dataVencimento = !data ? new Date() : formataData(data);
+            var data = textoTarefa.split(',')[2];            
+            tarefa.dataVencimento = !data ? new Date() : formataData(data); //TODO: Validar e novificar
 
             return tarefa;
         }
@@ -81,6 +83,7 @@ angular
         }
 
         function formataData(texto) {
+            //TODO: Validar e novificar
             var hoje = new Date();
             var dia = texto.split('/')[0];
             var mes = texto.split('/')[1] - 1; // No Date os meses são de 0 - 11
