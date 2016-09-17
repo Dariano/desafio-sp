@@ -57,7 +57,7 @@ angular
 
 		function calculaTarefas(tarefas) {
 			me.tarefas.concluidas = tarefas.filter(concluidas).length;
-			me.tarefas.atrasadas = tarefas.filter(atrazada).length;
+			me.tarefas.atrasadas = tarefas.filter(estaAtrazada).length;
 			me.tarefas.total = tarefas.length;
 		}
 
@@ -65,7 +65,8 @@ angular
 			return tarefa.concluida;
 		}
 
-		function atrazada(tarefa) {
-			return tarefa.dataVencimento < moment();
+		function estaAtrazada(tarefa) {
+			var data = moment(tarefa.dataVencimento);
+			return data.diff(moment(), 'days') < 0;
 		}
 	});

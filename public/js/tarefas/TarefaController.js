@@ -62,6 +62,7 @@ angular
         function adicionaTarefas(tarefa) {
             me.todas.push(tarefa);
             me.nova = false;
+            notificaAlteracao();
         }
 
         function tarefaBuild(textoTarefa) {
