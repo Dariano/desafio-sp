@@ -67,13 +67,14 @@ angular
 
         function tarefaBuild(textoTarefa) {
             var tarefa = {};
-            var descricao = textoTarefa.split(',')[0];
-            tarefa.descricao =trim(descricao); //TODO: Validar e novificar
+            var dadosDaTarefa = textoTarefa.split(','); 
+            var descricao = dadosDaTarefa[0];
+            tarefa.descricao = trim(descricao); //TODO: Validar e novificar
 
-            var dono = textoTarefa.split(',')[1];
-            tarefa.dono = !dono && me.todas ? me.todas[0].dono : dono; //TODO: Validar e novificar
+            var dono = dadosDaTarefa[1];
+            tarefa.dono = me.todas.lenght > 0 ? me.todas[0].dono : dono; //TODO: Validar e novificar
             
-            var data = textoTarefa.split(',')[2];            
+            var data = dadosDaTarefa[2];            
             tarefa.dataVencimento = !data ? new Date() : formataData(data); //TODO: Validar e novificar
 
             return tarefa;
