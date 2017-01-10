@@ -27,4 +27,13 @@ Para rodar a aplicação execute o comando
 
 Abra o navegador no endreço 
 
-> http://localhost:3001/#/
+> http://localhost:3000/#/
+
+Ou você pode subir a aplicação usando `docker-compose` rodando o comando
+
+    ```sh
+
+        docker-compose build
+
+        docker-compose up
+    ```
