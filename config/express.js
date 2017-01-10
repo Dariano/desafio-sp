@@ -6,10 +6,10 @@ module.exports = function() {
 	var app = express();
 
 	// configuração de abiente
-	app.set('port', 3001);
+	app.set('port', 3000);
 	
 	//middleware
-	app.use(express.static('./public'));
+	//app.use(express.static('./public'));
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));

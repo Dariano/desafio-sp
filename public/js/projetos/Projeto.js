@@ -3,16 +3,16 @@ angular
     .factory('Projeto', function($http){
         var servico = {
             todos: function () {
-                return $http.get('/projetos');
+                return $http.get('/api/projetos');
             },
             busca: function (id) {
-                return $http.get('/projetos/' + id, { cached: true });
+                return $http.get('/api/projetos/' + id, { cached: true });
             },
             salva: function (projeto) {
-                return $http.post('/projetos/', projeto);
+                return $http.post('/api/projetos/', projeto);
             },
             remove: function (id) {
-                return $http.delete('/projetos/' + id);
+                return $http.delete('/api/projetos/' + id);
             }
         };
 

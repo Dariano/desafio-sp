@@ -2,11 +2,11 @@ module.exports = function (app) {
 
 	var controller = app.controllers.projeto;
 
-	app.route('/projetos')
+	app.route('/api/projetos')
 		.get(controller.listaProjetos)
 		.post(controller.salvarProjeto);
 		
-	app.route('/projetos/:id')
+	app.route('/api/projetos/:id')
 		.get(controller.obtemProjeto)
 		.delete(controller.removerProjeto);
 };
