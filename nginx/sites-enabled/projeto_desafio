@@ -5,11 +5,11 @@ server {
   access_log /var/log/nginx/desafio-ps.log;
   charset utf-8;
 
-  location /public {
-    alias /src/public;
+  location / {
+    root /src/public;
   }
 
-  location / {
+  location /api {
     proxy_pass http://web:3000;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;

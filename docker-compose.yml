@@ -1,9 +1,16 @@
+db:
+  image: mongo
+  ports:
+    - "27017:27017"
+  command: "--smallfiles --logpath=/dev/null"
 web:
   build: .
   volumes:
     - ".:/src"
   ports:
     - "3000:3000"
+  links:
+    - db
   command: nodemon -L bin/www
 
 nginx:
