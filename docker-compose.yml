@@ -1,26 +1,38 @@
-db:
-  image: mongo
-  ports:
-    - "27017:27017"
-  command: "--smallfiles --logpath=/dev/null"
-web:
-  build: .
-  volumes:
-    - ".:/src"
-  ports:
-    - "3000:3000"
-  links:
-    - db
-  command: nodemon -L bin/www
+version: '2'
+services:
+  db:
+    image: mongo
+    container_name: db
+    volumes: 
+      - /var/lib/mongodb:/data/configdb
+    ports:
+      - "27017:27017"
+    command: --smallfiles
 
-nginx:
-  restart: always
-  build: ./nginx/
-  ports:
-    - "80:80"
-  volumes:
-    - /www/public
-  volumes_from:
-    - web
-  links:
-    - web:web
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: web
+    volumes:
+      - ".:/src"
+    ports:
+      - "3000:3000"
+    links:
+      - db:database
+    command: nodemon -L bin/www
+
+  nginx:
+    container_name: nginx
+    restart: always
+    build: 
+      context: ./nginx/
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    volumes:
+      - /www/public
+    volumes_from:
+      - web
+    links:
+      - web

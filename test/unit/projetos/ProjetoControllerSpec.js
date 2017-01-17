@@ -17,9 +17,7 @@ describe('ProjetoController', () => {
             var ctrl = $controller('ProjetoController');
 
             expect(ctrl.temProjetos).toBe(false);
-        });
-        
-    });
-        
+        });        
+    });        
 });
     
