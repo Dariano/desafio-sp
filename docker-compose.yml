@@ -3,21 +3,23 @@ services:
   db:
     image: mongo
     container_name: db
-    volumes: 
-      - /var/lib/mongodb:/data/configdb
+    restart: always
+    volumes:
+      - "/var/lib/mongodb:/var/lib/mongodb"
     ports:
-      - "27017:27017"
-    command: --smallfiles
+      - 27017:27017
+    command: "--smallfiles --logpath=/dev/null"
 
   web:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: web
+    restart: always
     volumes:
-      - ".:/src"
+      - .:/src
     ports:
-      - "3000:3000"
+      - 3000:3000
     links:
       - db:database
     command: nodemon -L bin/www
@@ -29,7 +31,7 @@ services:
       context: ./nginx/
       dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - 80:80
     volumes:
       - /www/public
     volumes_from:

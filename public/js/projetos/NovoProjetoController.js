@@ -1,16 +1,22 @@
 angular
 	.module('desafio')
-	.controller('NovoProjetoController', function(Projeto, $rootScope, $state) {
+	.controller('NovoProjetoController', function (Projeto, $rootScope, $state) {
 
-		this.salva = function(nome) {
-			if(event.which != 13) return;
+		this.salva = function (nome) {
+			if (event.which != 13) return;
 
-			if(!nome) return;
+			if (!nome) return;
 
 			Projeto
 				.salva({ nome: nome })
 				.success(notifica)
 				.error(mostra);
+		};
+
+		this.validacao = function (nome) {
+			console.log('nome', nome);
+
+			return false;
 		};
 
 		///////////////////////////////////
@@ -25,4 +31,5 @@ angular
 		function mostra(erro) {
 			console.log(erro);
 		}
+
 	});

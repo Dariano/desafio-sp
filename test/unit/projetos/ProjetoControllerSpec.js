@@ -1,19 +1,19 @@
 
-describe('ProjetoController', () => {
+describe('ProjetoController', function() {
 
     var scope;
     
-    beforeEach(() => {
+    beforeEach(function() {
         module('desafio');
-        inject(($rootScope) => {
+        inject(function($rootScope) {
             scope = $rootScope.$new();
         })
     });
         
     
-    it('Deve criar um ProjetoController', () => {
+    it('Deve criar um ProjetoController', function() {
 
-        inject(($controller) => {
+        inject(function($controller) {
             var ctrl = $controller('ProjetoController');
 
             expect(ctrl.temProjetos).toBe(false);
