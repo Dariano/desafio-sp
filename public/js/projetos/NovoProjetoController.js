@@ -2,8 +2,11 @@ angular
 	.module('desafio')
 	.controller('NovoProjetoController', function (Projeto, $rootScope, $state) {
 
-		this.salva = function (nome) {
-			if (event.which != 13) return;
+		var vm = this;
+		vm.status;
+
+		vm.salva = function (nome) {
+			// if (event.which != 13) return;
 
 			if (!nome) return;
 
@@ -13,7 +16,7 @@ angular
 				.error(mostra);
 		};
 
-		this.validacao = function (nome) {
+		vm.validacao = function (nome) {
 			console.log('nome', nome);
 
 			return false;
@@ -29,7 +32,7 @@ angular
 		}
 
 		function mostra(erro) {
-			console.log(erro);
+			vm.status = 'Erro!';
 		}
 
 	});

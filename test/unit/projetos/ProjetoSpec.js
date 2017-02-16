@@ -1,5 +1,5 @@
 
-fdescribe('Projeto factory', function () {
+describe('Projeto factory', function () {
 
     var projeto, httpBackend;;
 
