@@ -6,19 +6,6 @@ angular
 
         buscaProjetos($stateParams.id);
 
-        me.salva = function(event, novaTarefa) {
-            if(event.which != 13) return;
-
-            if (!novaTarefa) return;
-
-            var tarefa = tarefaBuild(novaTarefa);
-
-            Tarefa
-                .salva($stateParams.id, tarefa)
-                .success(adicionaTarefas)
-                .error(notifica);
-        };
-
         me.altera = function (tarefa) {
             Tarefa
                 .altera($stateParams.id, tarefa._id, { concluida: tarefa.concluida })
@@ -42,6 +29,10 @@ angular
             return dataConvetida.diff(moment(), 'days') < 0;
         };
 
+        $rootScope.$on('tarefa.nova', function(e, tarefa){
+             me.todas.push(tarefa);
+        });
+
         ///////////////////////////////////////////
 
         function buscaProjetos(idProjeto) {
@@ -57,31 +48,6 @@ angular
 
         function notifica(erro) {
             console.log(erro);
-        }
-
-        function adicionaTarefas(tarefa) {
-            me.todas.push(tarefa);
-            me.nova = false;
-            notificaAlteracao();
-        }
-
-        function tarefaBuild(textoTarefa) {
-            var tarefa = {};
-            var dadosDaTarefa = textoTarefa.split(','); 
-            var descricao = dadosDaTarefa[0];
-            tarefa.descricao = trim(descricao); //TODO: Validar e novificar
-
-            var dono = dadosDaTarefa[1];
-            tarefa.dono = me.todas.lenght > 0 ? me.todas[0].dono : dono; //TODO: Validar e novificar
-            
-            var data = dadosDaTarefa[2];            
-            tarefa.dataVencimento = !data ? new Date() : formataData(data); //TODO: Validar e novificar
-
-            return tarefa;
-        }
-
-        function trim(str) {
-            return str.replace(/^\s+|\s+$/g, "");
         }
 
         function formataData(texto) {

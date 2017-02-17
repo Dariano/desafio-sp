@@ -1,6 +1,11 @@
-<div class="input-group" ng-if="tarefa.nova">
+<div class="input-group" ng-if="$ctrl.nova">
     <span class="input-group-addon left">
-        <input type="checkbox" disabled="" ng-model="tarefa.concluida">
+        <input type="checkbox" disabled="" ng-model="$ctrl.concluida">
     </span>
-    <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="novaTarefa" ng-blur="tarefa.salva(novaTarefa)"/>
+    <input class="form-control" placeholder="Nova tarefa, @Dono, Dia/Mês" ng-model="$ctrl.novaTarefa" 
+    ng-keypress="$ctrl.salva($ctrl.novaTarefa, $event)" value="Nova tarefa, @Dono, Dia/Mês" />
+</div>
+
+<div>
+    <a class="link" ng-click="$ctrl.nova = !$ctrl.nova">{{ $ctrl.nova ? '-' : '+'}} Tarefa</a>
 </div>
