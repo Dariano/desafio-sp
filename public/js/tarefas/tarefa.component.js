@@ -10,7 +10,7 @@
         return {
             bindings: {
             },
-            controller: tarefaController,
+            controller: ['Tarefa', '$stateParams', '$rootScope', tarefaController],
             templateUrl: './partials/tarefas/tarefa-nova.html'
         };
 
