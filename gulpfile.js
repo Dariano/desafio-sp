@@ -20,8 +20,7 @@ gulp.task('usemin', function () {
   return gulp.src('./public/index.html')
     .pipe(usemin({
       css: [rev()],
-      js: [ngAnnotate(), uglify(), rev()],
-      depJs: [rev()]
+      js: [ngAnnotate(), uglify(), rev()]      
     }))
     .pipe(gulp.dest('build/'));
 });
@@ -33,11 +32,17 @@ gulp.task('copy', function () {
 
 gulp.task('bower', function () {
   return gulp.src('./public/index.html')
-    .pipe(inject(gulp.src(bowerFiles()), { name: 'bower', relative: true }))
+    .pipe(inject(gulp.src(bowerFiles(), { read: false }), { name: 'bower', relative: true }))
     .pipe(inject(gulp.src(['./public/js/**/*.js', './public/css/**/*.css'], { read: false }), { relative: true }))
     .pipe(gulp.dest('./public'));
 });
 
+gulp.task('htmlmin', function () {
+  return gulp.src(['./public/**/*.html', '!./public/vendor/**'])
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('build/'));
+});
+
 gulp.task('default', function (cb) {
-  return runSequence('clean', 'usemin', 'copy', cb)
+  return runSequence('clean', 'bower', 'usemin', 'copy', cb)
 });
