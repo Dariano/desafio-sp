@@ -22,6 +22,8 @@ module.exports = function(config) {
       './public/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js',
       './public/vendor/angular-dialog-service/dist/dialogs.min.js',
       './public/vendor/tg-angular-validator/dist/angular-validator.js',
+      './public/vendor/moment/moment.js',
+      './public/vendor/angular-moment/angular-moment.js',
       './public/js/app.js',
       './public/js/projetos/*.js',
       './public/js/tarefas/*.js',
@@ -56,7 +58,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_DISABLE,
+    logLevel: config.LOG_ERROR,
 
 
     // enable / disable watching file and executing tests whenever any file changes

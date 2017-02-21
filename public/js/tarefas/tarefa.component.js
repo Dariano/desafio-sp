@@ -3,71 +3,79 @@
 
     angular
         .module('desafio')
-        .component('novaTarefa', tarefa());
-
-    function tarefa() {
-
-        return {
+        .component('novaTarefa', {
             bindings: {
+                tarefa: '='
             },
-            controller: ['Tarefa', '$stateParams', '$rootScope', tarefaController],
+            controller: tarefaController,
             templateUrl: './partials/tarefas/tarefa-nova.html'
+        });
+
+    tarefaController.$inject = ['Tarefa', '$stateParams', '$rootScope', 'moment'];
+
+    function tarefaController(Tarefa, $stateParams, $rootScope, moment) {
+        var vm = this;
+
+        init();
+
+        vm.salva = function (novaTarefa, $event) {
+            if ($event.which != 13) return;
+
+            if (!novaTarefa) return;
+
+            var tarefa = tarefaBuild(novaTarefa);
+            var projetoId = $stateParams.id;
+
+            if (!projetoId) return;
+
+            Tarefa
+                .salva(projetoId, tarefa)
+                .success(adicionaTarefas)
+                .error(notifica);
         };
 
+        function init() {
 
-        function tarefaController(Tarefa, $stateParams, $rootScope) {
-            var vm = this;
+        }
 
-            init();
+        function tarefaBuild(textoTarefa) {
+            var tarefa = {};
+            var dadosDaTarefa = textoTarefa.split(',');
+            var descricao = dadosDaTarefa[0];
+            tarefa.descricao = trim(descricao); //TODO: Validar e novificar
 
-            vm.salva = function (novaTarefa, $event) {
-               
+            var dono = dadosDaTarefa[1];
+            tarefa.dono = dono; // me.todas.lenght > 0 ? me.todas[0].dono : dono; //TODO: Validar e novificar
 
-                if ($event.which != 13) return;
+            var data = dadosDaTarefa[2];
+            tarefa.dataVencimento = !data ? moment().toDate() : formataData(data); //TODO: Validar e novificar
 
-                if (!novaTarefa) return;
+            return tarefa;
+        }
 
-                var tarefa = tarefaBuild(novaTarefa);
-                var projetoId = $stateParams.id;
+        function trim(str) {
+            return str.replace(/^\s+|\s+$/g, "");
+        }
 
-                Tarefa
-                    .salva(projetoId, tarefa)
-                    .success(adicionaTarefas)
-                    .error(notifica);
-            };
+        function formataData(texto) {
+            //TODO: Validar e novificar
+            var hoje = new Date();
+            var dia = texto.split('/')[0];
+            var mes = texto.split('/')[1] - 1; // No Date os meses são de 0 - 11
 
-            function init() {
-                
+            if (dia && mes) {
+                return moment(hoje.getUTCFullYear(), parseInt(mes), parseInt(dia)).toDate();
             }
+        }
 
-            function tarefaBuild(textoTarefa) {
-                var tarefa = {};
-                var dadosDaTarefa = textoTarefa.split(',');
-                var descricao = dadosDaTarefa[0];
-                tarefa.descricao = trim(descricao); //TODO: Validar e novificar
+        function adicionaTarefas(tarefa) {
+            vm.nova = false;
+            $rootScope.$emit('tarefa.nova', tarefa);
+        }
 
-                var dono = dadosDaTarefa[1];
-                tarefa.dono = dono; // me.todas.lenght > 0 ? me.todas[0].dono : dono; //TODO: Validar e novificar
-
-                var data = dadosDaTarefa[2];
-                tarefa.dataVencimento = !data ? new Date() : formataData(data); //TODO: Validar e novificar
-
-                return tarefa;
-            }
-
-            function trim(str) {
-                return str.replace(/^\s+|\s+$/g, "");
-            }
-
-            function adicionaTarefas(tarefa) {
-                vm.nova = false;
-                $rootScope.$emit('tarefa.nova', tarefa);
-            }
-
-            function notifica(erro) {
-                vm.status = "Erro!"
-                console.log(erro);
-            }
+        function notifica(erro) {
+            vm.status = "Erro!"
+            console.log(erro);
         }
     }
 
