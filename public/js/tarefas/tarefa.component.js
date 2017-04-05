@@ -5,7 +5,7 @@
         .module('desafio')
         .component('novaTarefa', {
             bindings: {
-                tarefa: '='
+                tarefa: '<'
             },
             controller: tarefaController,
             templateUrl: './partials/tarefas/tarefa-nova.html'
@@ -16,7 +16,7 @@
     function tarefaController(Tarefa, $stateParams, $rootScope, moment) {
         var vm = this;
 
-        init();
+        vm.$onInit = init();
 
         vm.salva = function (novaTarefa, $event) {
             if ($event.which != 13) return;

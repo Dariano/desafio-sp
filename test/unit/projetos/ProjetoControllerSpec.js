@@ -1,5 +1,5 @@
 
-xdescribe('ProjetoController', function() {
+describe('ProjetoController', function() {
 
     var scope;
     

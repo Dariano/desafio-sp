@@ -17,24 +17,25 @@ services:
     container_name: web
     restart: always
     volumes:
-      - .:/src
+      - .:/home/app/desafio/
+      - /home/app/desafio/node_modules
     ports:
       - 3000:3000
     links:
       - db:database
-    command: nodemon -L bin/www
+    command: node bin/www
 
-  nginx:
-    container_name: nginx
-    restart: always
-    build: 
-      context: ./nginx/
-      dockerfile: Dockerfile
-    ports:
-      - 80:80
-    volumes:
-      - /www/public
-    volumes_from:
-      - web
-    links:
-      - web
+  # nginx:
+  #   container_name: nginx
+  #   restart: always
+  #   build: 
+  #     context: ./nginx/
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - /www/public
+  #   volumes_from:
+  #     - web
+  #   links:
+  #     - web

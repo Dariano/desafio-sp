@@ -9,7 +9,7 @@ module.exports = function() {
 	app.set('port', 3000);
 	
 	//middleware
-	app.use(express.static('./build'));
+	app.use(express.static('./public'));
 	app.use(bodyParser.urlencoded({
 		extended: true
 	}));

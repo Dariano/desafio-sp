@@ -24,6 +24,12 @@ module.exports = function(config) {
       './public/vendor/tg-angular-validator/dist/angular-validator.js',
       './public/vendor/moment/moment.js',
       './public/vendor/angular-moment/angular-moment.js',
+
+      './public/vendor/angular-dialog-service/dist/dialogs.js',
+      './public/vendor/angular-dialog-service/dist/dialogs-default-translations.js',
+      './public/vendor/angular-moment-picker/dist/angular-moment-picker.js',
+      './public/vendor/angular-spinner/dist/angular-spinner.js',
+
       './public/js/app.js',
       './public/js/projetos/*.js',
       './public/js/tarefas/*.js',

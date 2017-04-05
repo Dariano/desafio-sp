@@ -5,7 +5,7 @@ angular
 		var vm = this;
 		vm.status;
 
-		vm.salva = function (nome) {
+		vm.salva = function (event, nome) {
 			if (event.which != 13) return;
 
 			if (!nome) return;

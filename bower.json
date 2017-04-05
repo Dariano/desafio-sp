@@ -24,7 +24,8 @@
     "moment": "^2.14.1",
     "angular-ui-validate": "^1.2.2",
     "tg-angular-validator": "^1.2.9",
-    "angular-moment": "^1.0.1"
+    "angular-moment": "^1.0.1",
+    "angular-moment-picker": "moment-picker#^0.9.7"
   },
   "devDependencies": {
     "angular-mocks": "^1.6.1"

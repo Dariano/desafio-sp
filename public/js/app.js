@@ -1,7 +1,8 @@
 'use strict';
 
 /* global angular */
-var app = angular.module('desafio', ['ui.router', 'ui.bootstrap', 'dialogs.main', 'angularValidator', 'angularMoment']);
+var app = angular.module('desafio', ['ui.router', 'ui.bootstrap', 'dialogs.main', 'angularValidator', 
+    'angularMoment',  'moment-picker', 'angularSpinner']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 

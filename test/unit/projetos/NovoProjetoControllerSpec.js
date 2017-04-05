@@ -22,8 +22,10 @@ describe('NovoProjetoController', function () {
     it('deve chamar Projeto.sava()', function () {
         spyOn(Projeto, 'salva').and.callThrough();
 
+        var event = { which: 13 };
+
         NovoProjetoController
-            .salva('Projeto 1');
+            .salva(event, 'Projeto 1');
 
         expect(Projeto.salva).toHaveBeenCalled();
     });
@@ -67,8 +69,10 @@ describe('NovoProjetoController salvar com sucesso', function () {
             .expectPOST('/api/projetos/')
             .respond(201, { id: 1, nome: 'Projeto 1' });
 
+        var event = { which: 13 };
+
         NovoProjetoController
-            .salva('Projeto 1');
+            .salva(event, 'Projeto 1');
 
         $httpBackend.flush();
 
@@ -82,9 +86,11 @@ describe('NovoProjetoController salvar com sucesso', function () {
             .expectPOST('/api/projetos/')
             .respond(500, '');
 
+        var event = { which: 13 };
+
         NovoProjetoController
-            .salva('Projeto 1');
-            
+            .salva(event, 'Projeto 1');
+
         $httpBackend.flush();
 
         expect(NovoProjetoController.status).toBe('Erro!');

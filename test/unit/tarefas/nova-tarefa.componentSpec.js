@@ -1,5 +1,4 @@
-
-fdescribe('Nova tarefa', function () {
+describe('Nova tarefa', function () {
 
     var $componentController;
     var ctrl, $stateParams, $rootScope, Tarefa, moment, $q;

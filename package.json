@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "MONGO_URL=mongodb://localhost:27017/desafio-sp node ./bin/www",
-    "nodemon": "MONGO_URL=mongodb://localhost:27017/desafio-sp nodemon ./bin/www",
+    "nodemon:d": "node_modules/.bin/nodemon -L bin/www",
     "test": "karma start ./test/karma.config.js"
   },
   "repository": {
@@ -41,6 +41,7 @@
     "karma-phantomjs-launcher": "^1.0.2",
     "karma-spec-reporter": "0.0.26",
     "main-bower-files": "^2.13.1",
+    "nodemon": "^1.11.0",
     "run-sequence": "^1.2.2"
   }
 }
